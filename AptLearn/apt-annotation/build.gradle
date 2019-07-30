@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+boolean local = localPublish.toBoolean()
+println "isLocal >>>  " + local
+if (local) {
+    apply from: '../localPublish.gradle'
+} else {
+    apply from: '../mavenPublish.gradle'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
