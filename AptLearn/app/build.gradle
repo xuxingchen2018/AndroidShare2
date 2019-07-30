@@ -17,6 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    //设置此处的option主要是为了同步与annotationProcessor中配置的Java版本
+    compileOptions {
+        encoding = "UTF-8"
+        sourceCompatibility = '1.7'
+        targetCompatibility = '1.7'
+    }
 }
 
 dependencies {
@@ -28,6 +35,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation "com.mrcd:apt-annotation:0.0.1"
-    annotationProcessor project(path: ':apt-compiler')
+    annotationProcessor "com.mrcd:apt-compiler:0.0.2"
 
 }

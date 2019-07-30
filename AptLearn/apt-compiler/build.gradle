@@ -13,6 +13,7 @@ dependencies {
     //此处是坑，如果不加入这个注解处理器，auto-service不会自动配置注解处理器，会导致程序不运行
     annotationProcessor "com.google.auto.service:auto-service:1.0-rc5"
 
+    //注意此处不要用implementation，否则运行时将找不到依赖
     compile 'com.google.auto.service:auto-service:1.0-rc5'
     compile 'com.squareup:javapoet:1.9.0'
     compile 'com.google.code.gson:gson:2.8.5'

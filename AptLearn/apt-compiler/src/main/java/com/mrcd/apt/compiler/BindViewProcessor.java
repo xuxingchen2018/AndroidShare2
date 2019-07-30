@@ -1,6 +1,7 @@
 package com.mrcd.apt.compiler;
 
 import com.google.auto.service.AutoService;
+import com.google.gson.Gson;
 import com.mrcd.apt.annotation.BindView;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
@@ -93,6 +94,9 @@ public class BindViewProcessor extends AbstractProcessor {
      */
     private JavaFile generateViewFinder(TypeElement element, Set<ViewInfo> viewInfos) {
         System.out.println("View info size: " + viewInfos.size());
+        Gson gson = new Gson();
+        String json = gson.toJson(viewInfos);
+        System.out.println("ViewInfo json >>> " + json);
         MethodSpec.Builder builder = MethodSpec.methodBuilder("bindView")
             .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
             .addParameter(ClassName.get(element.asType()), "target")
